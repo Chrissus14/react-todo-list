@@ -5,7 +5,11 @@ import TodoItem from '../components/TodoItem'
 import Button from '../components/Button';
 
 const ListContainer = styled.section`
-  width: 70%;
+  width: 60%;
+  @media (max-width: 500px) {
+    width: 100%;
+    padding: 0 1rem;
+  }
 `;
 
 const TodoList = () => {

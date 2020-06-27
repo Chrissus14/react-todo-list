@@ -5,7 +5,11 @@ import Button from "../components/Button";
 import styled from 'styled-components';
 
 const TodoInputSection = styled.section`
-  width: 70%;
+  width: 60%;
+  @media (max-width: 500px) {
+    width: 100%;
+    padding: 0 1rem;
+  }
 `;
 const FormContainer = styled.div`
   border: 2px solid gray;
