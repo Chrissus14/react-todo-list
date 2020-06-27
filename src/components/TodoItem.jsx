@@ -13,10 +13,10 @@ const Todo = styled.div`
   padding: 0.9rem;
 `
 
-const TodoItem = () => {
+const TodoItem = ({ todo }) => {
   return (
     <Todo>
-      <span>Este es el todo</span>
+      <span>{ todo }</span>
       <span>
         <Icon icon={faPencilAlt} color="#27ae60" />
         <Icon icon={faTrash} color="#e74c3c" />

@@ -12,13 +12,12 @@ const ListContainer = styled.section`
   }
 `;
 
-const TodoList = () => {
+const TodoList = ({ todos }) => {
+  const todosList = todos.map( todo => <TodoItem key={todo.id} todo={todo.todo} /> )
   return (
     <ListContainer>
       <Title title="Todo List" />
-      <TodoItem/>
-      <TodoItem />
-      <TodoItem />
+      { todosList }
       <Button name="Borrar Todos" bg='#c0392b'/>
     </ListContainer>
   )

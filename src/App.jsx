@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { v4 as uuidv4 } from 'uuid';
 import styled, { createGlobalStyle } from 'styled-components';
 import TodoInput from './containers/TodoInput';
 import TodoList from './containers/TodoList';
@@ -22,11 +23,19 @@ const Main = styled.main`
 `;
 
 const App = () => {
+
+  const [todos, setTodos] = useState([])
+
+  const addTodo = ( todo ) => {
+    const newTodo = todos.concat({todo, id: uuidv4()})
+    setTodos(newTodo)
+  } 
+
   return (
     <Main>
       <GlobalStyle/>
-      <TodoInput/>
-      <TodoList/>
+      <TodoInput handleAdd={addTodo} />
+      <TodoList todos={todos}/>
     </Main>
   );
 }

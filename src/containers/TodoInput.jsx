@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Title from "../components/Title";
 import Input from "../components/Input";
 import Button from "../components/Button";
@@ -17,14 +17,26 @@ const FormContainer = styled.div`
   width: 100%;
 `;
 
-const TodoInput = () => {
+const TodoInput = ({ handleAdd }) => {
+
+  const [todo, setTodo] = useState('')
+
+  const handleChange = (e) => {
+    setTodo(e.target.value)
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    handleAdd(todo)
+  }
+
   return (
       <TodoInputSection>
         <Title title="Todo Input" />
         <FormContainer>
-          <form>
-            <Input />
-          <Button name="Agregar Todo" bg='#2980b9' />
+          <form onSubmit={handleSubmit}>
+            <Input change={handleChange} />
+            <Button name="Agregar Todo" bg='#2980b9' />
           </form>
         </FormContainer>
       </TodoInputSection>
