@@ -17,9 +17,9 @@ const FormContainer = styled.div`
   width: 100%;
 `;
 
-const TodoInput = ({ handleAdd }) => {
+const TodoInput = ({ handleAdd, textValue }) => {
 
-  const [todo, setTodo] = useState('')
+  const [todo, setTodo] = useState(textValue)
 
   const handleChange = (e) => {
     setTodo(e.target.value)
@@ -28,6 +28,7 @@ const TodoInput = ({ handleAdd }) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     handleAdd(todo)
+    setTodo('')
   }
 
   return (
@@ -35,7 +36,7 @@ const TodoInput = ({ handleAdd }) => {
         <Title title="Todo Input" />
         <FormContainer>
           <form onSubmit={handleSubmit}>
-            <Input change={handleChange} />
+          <Input change={handleChange} todo={todo} />
             <Button name="Agregar Todo" bg='#2980b9' />
           </form>
         </FormContainer>

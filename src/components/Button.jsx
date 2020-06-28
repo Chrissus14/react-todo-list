@@ -11,10 +11,10 @@ const Btn = styled.button`
   opacity: 0.9;
 `;
 
-const Button = ({ name, bg }) => {
+const Button = ({ name, bg, clickEvent }) => {
   return (
     <div>
-      <Btn type="submit" bg={bg}>{name}</Btn>
+      <Btn type="submit" bg={bg} onClick={clickEvent} >{name}</Btn>
     </div>
   );
 }

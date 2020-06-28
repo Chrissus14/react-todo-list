@@ -24,18 +24,34 @@ const Main = styled.main`
 
 const App = () => {
 
-  const [todos, setTodos] = useState([])
+  const [todos, setTodos] = useState([{ id: 1, todo: 'todo de prueba', isComplete: false }])
+  const [todo, setTodo] = useState('')
 
   const addTodo = ( todo ) => {
-    const newTodo = todos.concat({todo, id: uuidv4()})
+    const newTodo = todos.concat({todo, id: uuidv4(), isComplete: false})
     setTodos(newTodo)
+    setTodo(todo)
   } 
+
+  const completeTodo = (id) => {
+    const newTodos = [...todos]
+    const updateItem = todos.find( item => item.id === id )
+    updateItem.isComplete = true  
+    setTodos(newTodos)
+  }
+  const deleteTodo = ( id ) => {
+    const newList = todos.filter( todo => todo.id !== id )
+    setTodos(newList)
+  }
+  const clearTodo = () => {
+    setTodos([])
+  }
 
   return (
     <Main>
       <GlobalStyle/>
-      <TodoInput handleAdd={addTodo} />
-      <TodoList todos={todos}/>
+      <TodoInput handleAdd={addTodo} textValue={todo}  />
+      <TodoList todos={todos} deleteTodo={deleteTodo} completeTodo={completeTodo} event={clearTodo} />
     </Main>
   );
 }

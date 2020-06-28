@@ -11,15 +11,26 @@ const Todo = styled.div`
   justify-content: space-between;
   margin-bottom: 10px;
   padding: 0.9rem;
+  text-decoration: ${ props => props.decoration };
 `
 
-const TodoItem = ({ todo }) => {
+const TodoItem = ({ todo, id, deleteTodo, completeTodo, decoration}) => {
+
+
+  const handleDeleteTodo = ( id ) => {
+    deleteTodo(id)
+  }
+  const handleCompleteTodo = (id) => {
+    completeTodo(id)
+  }
+
+
   return (
-    <Todo>
-      <span>{ todo }</span>
+    <Todo decoration={decoration}>
+      <span>{ todo.todo }</span>
       <span>
-        <Icon icon={faPencilAlt} color="#27ae60" />
-        <Icon icon={faTrash} color="#e74c3c" />
+        <Icon icon={faPencilAlt} color="#27ae60" title="Completar" id={id} handleId={handleCompleteTodo} />
+        <Icon icon={faTrash} color="#e74c3c" title="Eliminar" id={id} handleId={handleDeleteTodo} />
       </span>
     </Todo>
   )

@@ -14,11 +14,12 @@ const InputField = styled.input`
   outline: none;
 `;
 
-const Input = ({ change }) => {
+const Input = ({ change, todo}) => {
+
   return (
     <InputContainer className="input-container">
       <Icon icon={faThList} bg="#3498db" />
-      <InputField onChange={change} type="text" placeholder="Agrega una tarea a tu lista" />
+      <InputField onChange={change} type="text" placeholder="Agrega una tarea a tu lista" value={todo} />
     </InputContainer>
   );
 }
