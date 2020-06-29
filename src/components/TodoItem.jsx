@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Icon from './Icon'
-import { faPencilAlt, faTrash } from '@fortawesome/free-solid-svg-icons'
+import { faCheck, faTrash } from '@fortawesome/free-solid-svg-icons'
 
 const Todo = styled.div`
   align-items: center;
@@ -29,7 +29,7 @@ const TodoItem = ({ todo, id, deleteTodo, completeTodo, decoration}) => {
     <Todo decoration={decoration}>
       <span>{ todo.todo }</span>
       <span>
-        <Icon icon={faPencilAlt} color="#27ae60" title="Completar" id={id} handleId={handleCompleteTodo} />
+        <Icon icon={faCheck} color="#27ae60" title="Completar" id={id} handleId={handleCompleteTodo} />
         <Icon icon={faTrash} color="#e74c3c" title="Eliminar" id={id} handleId={handleDeleteTodo} />
       </span>
     </Todo>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { v4 as uuidv4 } from 'uuid';
 import styled, { createGlobalStyle } from 'styled-components';
 import TodoInput from './containers/TodoInput';
@@ -24,8 +24,15 @@ const Main = styled.main`
 
 const App = () => {
 
-  const [todos, setTodos] = useState([{ id: 1, todo: 'todo de prueba', isComplete: false }])
+  const localData = localStorage.getItem('todos') 
+  const initialState = localData ? JSON.parse(localData) : []
+
+  const [todos, setTodos] = useState(initialState)
   const [todo, setTodo] = useState('')
+
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos))
+  }, [todos])
 
   const addTodo = ( todo ) => {
     const newTodo = todos.concat({todo, id: uuidv4(), isComplete: false})
